@@ -1,3 +1,5 @@
+> Le mode gratuit GitHub Pages est maintenant préparé : voir [le guide Pages](github-pages.md). Ce document décrit le mode serveur Python alternatif.
+
 # Préparation de l’hébergement
 
 **Mise à jour après connexion :** la collecte réelle est maintenant validée dans Codex et un processus horaire y a été lancé. Les prérequis réseau et secrets de cette instance sont résolus. L’offre d’hébergement de production reste inconnue : GitHub est le seul service identifié avec l’utilisateur. Les étapes ci-dessous concernent une future production, pas un site déjà publié.

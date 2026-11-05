@@ -18,3 +18,7 @@ test-results/
 docs/analyse-excel.md
 docs/collecte-aurora.md
 docs/validation.md
+
+_site/
+node_modules/
+data/*.enc.json

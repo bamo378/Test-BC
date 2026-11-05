@@ -84,6 +84,6 @@ def index():
 
 @app.get('/static/{name}')
 def asset(name: str):
-    if name not in ('app.js','model.js','charts.js','extras.js','entries.js','style.css','favicon.svg','logo-polyimmo.svg','logo-polyimmo.png') or not (STATIC/name).is_file():
+    if name not in ('pages-data.js','private-crypto.js','transport.js','pages-ui.js','pages.css','excel-local.js','app.js','model.js','charts.js','extras.js','entries.js','style.css','favicon.svg','logo-polyimmo.svg','logo-polyimmo.png') or not (STATIC/name).is_file():
         return JSONResponse({'detail':'Not found'},status_code=404)
     return FileResponse(STATIC/name)

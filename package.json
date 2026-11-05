@@ -1,1 +1,1 @@
-{"name":"polyimmo-dashboard","private":true,"type":"module","scripts":{"test":"node tests/frontend.test.js"}}
+{"name":"polyimmo-dashboard","private":true,"type":"module","scripts":{"test":"node tests/frontend.test.js && node tests/pages.test.js"}}

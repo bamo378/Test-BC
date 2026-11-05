@@ -25,8 +25,8 @@ Les vues et le brouillon sont mémorisés localement. Les scénarios expliciteme
 
 ## Logo et validation
 
-Le logo visible dans la conversation n’existe pas comme fichier local accessible. Le nom PolyImmo noir/rouge reste provisoire ; l’interface détecte `polyimmo/static/logo-polyimmo.png` ou `.svg` dès ajout de l’original, sans le redessiner.
+Le logo original PolyImmo, retrouvé dans le dépôt de référence fourni par l’utilisateur, est intégré sans modification. Le mode GitHub Pages garde les styles, graphiques et formulaires existants ; le stockage local et les sauvegardes sont décrits dans `github-pages.md`.
 
-25 tests Python, 13 tests JavaScript et le parcours Chromium des six onglets à cinq largeurs ont réussi. Les ajouts financiers d’essai restent dans une base temporaire. Captures réelles : `.local/final-overview.png`, `final-production.png`, `final-entries.png`, `final-entry-form.png`, `final-projection.png`, `final-sources.png` et versions mobiles. Le protocole et les limites publiables sont dans `sources.md` ; les résultats chiffrés restent dans la documentation privée.
+28 tests Python, 16 tests JavaScript et le parcours Chromium des six onglets à cinq largeurs ont réussi. Les ajouts financiers d’essai restent dans une base temporaire. Captures réelles : `.local/final-overview.png`, `final-production.png`, `final-entries.png`, `final-entry-form.png`, `final-projection.png`, `final-sources.png` et versions mobiles. Le protocole et les limites publiables sont dans `sources.md` ; les résultats chiffrés restent dans la documentation privée.
 
 Le serveur et la collecte fonctionnent dans Codex. L’hébergement permanent et l’authentification du site restent à mettre en place ; les captures sont des aperçus, pas un lien public de production.

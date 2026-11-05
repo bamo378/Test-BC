@@ -6,7 +6,15 @@ L’interface noir/blanc/rouge comporte six onglets : vue d’ensemble, producti
 
 Les montants attendus du GRD et les encaissements bancaires sont séparés. La banque complète le même relevé ; les chevauchements sont rejetés. L’Excel original reste inchangé. Les tests de saisie utilisent une base temporaire, jamais le suivi réel.
 
-Le logo original n’existe pas comme fichier accessible dans les pièces jointes locales ; le nom PolyImmo typographique reste provisoire. Ajouter l’original sous `polyimmo/static/logo-polyimmo.png` ou `.svg` pour son chargement automatique.
+Le logo original fourni dans le dépôt de référence Polyimmo est intégré sous `polyimmo/static/logo-polyimmo.png`.
+
+## GitHub Pages : le site gratuit
+
+Le vrai tableau de bord s’ouvre sur **https://bamo378.github.io/Test-BC/**. Il fonctionne directement dans le navigateur : import privé du classeur, formulaires existants de saisie GRD/banque/autres revenus/charges, filtres et projections. Le logo original est intégré. Les données financières restent dans IndexedDB ; les sauvegardes chiffrées permettent de changer d’appareil. Aucun jeton GitHub ou identifiant Aurora n’est demandé aux visiteurs.
+
+La collecte automatique est préparée dans GitHub Actions et publie uniquement des mesures chiffrées. Son activation requiert trois secrets GitHub et la source Pages « GitHub Actions ». Le test de bout en bout après activation reste nécessaire. **[Guide complet et activation](docs/github-pages.md)**.
+
+Le serveur Python ci-dessous reste une autre façon d’utiliser le projet ; il n’est pas nécessaire pour les saisies sur GitHub Pages.
 
 ## Démarrage privé
 
@@ -50,9 +58,9 @@ python -m unittest discover -s tests -v
 node tests/frontend.test.js
 ```
 
-**25 tests Python et 13 tests JavaScript ont réussi**, plus les parcours Chromium des six onglets à cinq largeurs. Node sert aux tests ; aucun paquet npm ni compilation n’est requis pour servir l’application.
+**28 tests Python et 16 tests JavaScript ont réussi**, plus les parcours Chromium des six onglets à cinq largeurs. Node sert aux tests ; aucun paquet npm ni compilation n’est requis pour servir l’application.
 
-L’hébergement permanent, le domaine et l’authentification du site restent à choisir. GitHub Pages ne peut pas exécuter ce collecteur. Les modèles systemd et Caddy sous `deploy/` préparent un serveur unique avec stockage persistant, HTTPS et accès privé sur toutes les routes. Ils ne sont pas déployés. Uvicorn reste sur loopback jusque-là. Les secrets de cette instance Codex ne sont pas exportables vers un hébergeur : ses propres secrets devront être renseignés par un moyen sécurisé.
+Dans le mode serveur Python, un hébergement avec stockage persistant et authentification est nécessaire. Dans le mode GitHub Pages, GitHub Actions exécute le collecteur et les données publiées sont chiffrées. Les modèles systemd et Caddy sous `deploy/` préparent un serveur unique avec stockage persistant, HTTPS et accès privé sur toutes les routes. Ils ne sont pas déployés. Uvicorn reste sur loopback jusque-là. Les secrets de cette instance Codex ne sont pas exportables vers un hébergeur : ses propres secrets devront être renseignés par un moyen sécurisé.
 
 - [Sources, protocole de collecte et calculs](docs/sources.md)
 - [Interface et fonctions](docs/interface.md)

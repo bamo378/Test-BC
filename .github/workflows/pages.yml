@@ -1,0 +1,53 @@
+name: Site PolyImmo et collecte chiffrée
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: polyimmo-pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Construire uniquement les fichiers publics
+        run: python scripts/build_pages.py
+      - name: Installer le collecteur
+        run: python -m pip install -r requirements-pages.txt
+      - name: Collecter et chiffrer les mesures
+        env:
+          AURORA_LOGIN: ${{ secrets.AURORA_LOGIN }}
+          AURORA_PASSWORD: ${{ secrets.AURORA_PASSWORD }}
+          POLYIMMO_DATA_PASSWORD: ${{ secrets.POLYIMMO_DATA_PASSWORD }}
+        shell: bash
+        run: |
+          if [[ -n "$AURORA_LOGIN" && -n "$AURORA_PASSWORD" && -n "$POLYIMMO_DATA_PASSWORD" ]]; then
+            python scripts/collect_pages.py
+          else
+            echo "Interface prête. Collecte non activée : renseigner les trois secrets du dépôt."
+            python scripts/collect_pages.py --preserve-only
+          fi
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publier le site
+        id: deployment
+        uses: actions/deploy-pages@v4

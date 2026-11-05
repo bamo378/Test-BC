@@ -61,6 +61,6 @@ L’accueil est personnalisable et dispose d’un écran mural. Les alertes port
 
 ## Validation
 
-25 tests Python et 13 tests JavaScript ont été exécutés avec succès. Le parcours Chromium complet a utilisé une **copie temporaire** de la base pour tester GRD → banque → charge → archivage/restauration, tarifs trimestriels et sauvegarde/rechargement des scénarios, favoris, calendrier, PDF et six sections à cinq largeurs d’écran. Aucun montant d’essai n’a été ajouté au suivi réel. Les captures et le rapport de référence destinés à l’utilisateur ont ensuite été produits avec les seules données réelles.
+28 tests Python et 16 tests JavaScript ont été exécutés avec succès. Le parcours Chromium complet a utilisé une **copie temporaire** de la base pour tester GRD → banque → charge → archivage/restauration, tarifs trimestriels et sauvegarde/rechargement des scénarios, favoris, calendrier, PDF et six sections à cinq largeurs d’écran. Aucun montant d’essai n’a été ajouté au suivi réel. Les captures et le rapport de référence destinés à l’utilisateur ont ensuite été produits avec les seules données réelles.
 
 L’interface et la collecte fonctionnent dans l’environnement de développement. La mise en production exige toujours l’hébergement permanent, l’authentification du site et une sauvegarde testée de sa base privée.
