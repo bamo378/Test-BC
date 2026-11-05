@@ -1,0 +1,20 @@
+.venv/
+.local/
+__pycache__/
+*.pyc
+.env
+.env.*
+*.xlsx
+*.csv
+*.sqlite*
+*.db
+*storage-state*
+*cookies*
+*session*.json
+playwright-report/
+test-results/
+
+# Rapports contenant les mesures et montants de l’installation
+docs/analyse-excel.md
+docs/collecte-aurora.md
+docs/validation.md

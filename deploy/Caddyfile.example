@@ -1,0 +1,9 @@
+# Template only: set these values securely on the production server.
+# The site's login is independent of Aurora Vision.
+{$POLYIMMO_DOMAIN} {
+    encode zstd gzip
+    basic_auth {
+        {$SITE_USERNAME} {$SITE_PASSWORD_HASH}
+    }
+    reverse_proxy 127.0.0.1:8000
+}

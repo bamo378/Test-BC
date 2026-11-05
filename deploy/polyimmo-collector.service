@@ -1,0 +1,26 @@
+[Unit]
+Description=PolyImmo read-only Aurora Vision collector
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=polyimmo
+Group=polyimmo
+WorkingDirectory=/opt/polyimmo
+Environment=POLYIMMO_DB=/var/lib/polyimmo/polyimmo.sqlite3
+Environment=PYTHONDONTWRITEBYTECODE=1
+EnvironmentFile=/etc/polyimmo/aurora.env
+ExecStart=/opt/polyimmo/.venv/bin/python -m polyimmo.collector --loop --interval 3600
+Restart=on-failure
+RestartSec=60
+UMask=0077
+StateDirectory=polyimmo
+StateDirectoryMode=0700
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/polyimmo
+
+[Install]
+WantedBy=multi-user.target

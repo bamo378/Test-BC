@@ -1,0 +1,25 @@
+[Unit]
+Description=PolyImmo private dashboard
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=polyimmo
+Group=polyimmo
+WorkingDirectory=/opt/polyimmo
+Environment=POLYIMMO_DB=/var/lib/polyimmo/polyimmo.sqlite3
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/opt/polyimmo/.venv/bin/python -m uvicorn polyimmo.web:app --host 127.0.0.1 --port 8000 --no-access-log
+Restart=on-failure
+RestartSec=60
+UMask=0077
+StateDirectory=polyimmo
+StateDirectoryMode=0700
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/polyimmo
+
+[Install]
+WantedBy=multi-user.target
